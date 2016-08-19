@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 class AddTodo extends Component {
@@ -14,4 +14,16 @@ class AddTodo extends Component {
     }
 }
 
-export default connect()(AddTodo);
+AddTodo.propTypes = {
+    onAdd:PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAdd: (text)=> {
+            dispatch({type: 'ADD', text});
+        }
+    }
+};
+
+export default connect(()=>{}, mapDispatchToProps)(AddTodo);

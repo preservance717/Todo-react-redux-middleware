@@ -8,13 +8,9 @@ import reducer from './reducers/reducer';
 const store = createStore(reducer);
 
 class App extends React.Component {
-    add(value) {
-        store.dispatch({type: 'ADD', value});
-    }
-
     render() {
         return <Provider store={store}>
-            <AddTodo onAdd={this.add.bind(this)}/>
+            <AddTodo/>
         </Provider>
     }
 }
